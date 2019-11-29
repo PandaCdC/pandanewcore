@@ -107,5 +107,6 @@ public class Main extends JavaPlugin {
         getCommand("setspawn").setExecutor(new SetSpawnCMD());
         getCommand("spawn").setExecutor(new GotoSpawnCMD());
         getCommand("resetaccount").setExecutor(new ResetAccountCMD());
+        getCommand("resetallaccounts").setExecutor(new ResetAllAccountsCMD());
     }
 }
