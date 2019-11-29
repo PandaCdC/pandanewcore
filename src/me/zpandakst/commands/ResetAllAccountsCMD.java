@@ -18,20 +18,18 @@ public class ResetAllAccountsCMD implements CommandExecutor {
                 return false;
             }
 
-            if (args.length == 1) {
-
-                Player player = Bukkit.getPlayer(args[0]);
+            if (args.length == 0) {
 
                 try {
-                    GroupManager.resetAccount(player.getName());
-                    p.sendMessage("§4§lRESET §fVocê acabou de §4§lRESETAR §fa conta do usuário (a): " + player.getName());
+                    GroupManager.resetAllAccounts();
+                    p.sendMessage("§4§lRESET §fVocê acabou de §4§lRESETAR TODAS AS CONTAS §f presentes no banco de dados na tabela secundaria (`groupmanager_staff`)!");
 
                 } catch (Exception ex) {
-                    p.sendMessage("§c§lERROR §cUsuário não encontrado!");
+                    p.sendMessage("§c§lERROR §cErro encontrado!");
                 }
 
             } else {
-                p.sendMessage("§3§lGRUPO §fUtilize /resetaccount <nick>");
+                p.sendMessage("§3§lGRUPO §fUtilize /resetallaccounts");
                 return false;
             }
         }
