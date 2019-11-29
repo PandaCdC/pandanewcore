@@ -76,13 +76,4 @@ public class OnJoin implements Listener {
         Player p = e.getPlayer();
         p.chat("/tag membro");
     }
-
-    @EventHandler
-    public void onPandaJoin(PlayerJoinEvent e) {
-        Player p = e.getPlayer();
-        if(!(p.getName().equals("zPandaKST_"))) {
-        }
-
-        Bukkit.broadcastMessage("§3§lSTAFF §7O §4§lCEO §4zPandaKST_ §7entrou nesse lobby.");
-    }
 }
