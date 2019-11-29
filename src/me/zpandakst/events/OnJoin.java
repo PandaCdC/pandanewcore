@@ -68,7 +68,7 @@ public class OnJoin implements Listener {
         p.sendMessage("§cLembre-se, estamos em §1BETA§c, caso encontre algum bug, digite: §a/bugreport.");
         p.sendMessage("§aMuito obrigado, pela sua presença em nossos servidores.");
         p.sendMessage("§f§m-------------------------------");
-        e.setJoinMessage("§f[§2+§f] §");
+        e.setJoinMessage("§f[§2+§f] §7" + p.getName());
     }
 
     @EventHandler
