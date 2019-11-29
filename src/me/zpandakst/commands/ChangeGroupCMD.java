@@ -37,7 +37,7 @@ public class ChangeGroupCMD implements CommandExecutor, Listener {
 
                     if (cargo == null) {
                         GroupManager.setarPrimeiroCargo(player.getName(), p.getName(), player.getAddress().getHostName(), cargoTipo, estadosTipo);
-                        p.sendMessage("§3§lGROUP §fVocê alterou o cargo do jogador (a)§a: " + player.getName() + " §7para: " + nomeCargo.toUpperCase());
+                        p.sendMessage("§3§lGROUP §fVocê setou o cargo do jogador (a)§a: " + player.getName() + " §7para: " + nomeCargo.toUpperCase());
                     } else {
                         GroupManager.mudarEstado(estado, estadosTipo);
                         GroupManager.mudarCargo(cargo, cargoTipo);
