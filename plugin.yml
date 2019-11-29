@@ -1,0 +1,20 @@
+name: PandaOldCore
+main: me.zpandakst.Main
+version: 2.1.7
+description: Plugin CORE antigo das redes Panda
+author: zPandaKST_
+commands:
+  cc:
+  chatclear:
+  tag:
+  setcargo:
+  changegroup:
+  pentcheck:
+  account:
+  fly:
+  voar:
+  forcechat:
+  setspawn:
+  spawn:
+  groupset:
+  resetaccount:
