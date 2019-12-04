@@ -25,7 +25,7 @@ public class PentCheckCMD implements CommandExecutor {
 
         p.sendMessage("§aStatus da conta: ");
         p.sendMessage("§3Nickname: §a" + player.getName());
-        p.sendMessage("§3Cargo: §a" + GroupManager.pegarCargo(player.getName()));
+        p.sendMessage("§3Cargo: §a" + GroupManager.pegarCargo(player.getName()).getCargo());
         p.sendMessage("§3UUID: §a" + player.getUniqueId().toString());
         p.sendMessage("§3IP: §a" + player.getAddress().getHostName());
         if (player.isOp()) {

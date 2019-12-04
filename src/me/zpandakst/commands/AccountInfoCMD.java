@@ -26,7 +26,7 @@ public class AccountInfoCMD implements CommandExecutor {
 
         p.sendMessage("§Status da conta: ");
         p.sendMessage("§3Nickname: §a" + player.getName());
-        p.sendMessage("§3Cargo: §a" + GroupManager.pegarCargo(player.getName()));
+        p.sendMessage("§3Cargo: §a" + GroupManager.pegarCargo(player.getName()).getCargo());
         p.sendMessage("");
         if (player.isOp()) {
             sender.sendMessage("§3OP: §aAtivo");
