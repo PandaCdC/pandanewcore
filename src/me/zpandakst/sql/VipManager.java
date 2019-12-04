@@ -42,8 +42,8 @@ public class VipManager {
 
     }
 
-    public static void resetCache(String nickname) {
-        database.delete("groupmanager_vip", pegarVip(nickname).getRegisterId());
+    public static void resetAllAccounts() {
+    database.clearTable("groupmanager_vip");
     }
 
     public static void reload() {

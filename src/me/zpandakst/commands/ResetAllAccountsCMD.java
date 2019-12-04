@@ -2,6 +2,7 @@ package me.zpandakst.commands;
 
 import me.zpandakst.Main;
 import me.zpandakst.sql.GroupManager;
+import me.zpandakst.sql.VipManager;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -22,14 +23,15 @@ public class ResetAllAccountsCMD implements CommandExecutor {
 
                 try {
                     GroupManager.resetAllAccounts();
-                    p.sendMessage("§4§lRESET §fVocê acabou de §4§lRESETAR TODAS AS CONTAS §f presentes no banco de dados na tabela secundaria (`groupmanager_staff`)!");
+                    VipManager.resetAllAccounts();
+                    p.sendMessage("§4§lRESET §fVocê acabou de §4§lRESETAR TODAS AS CONTAS §f presentes no banco de dados!");
 
                 } catch (Exception ex) {
                     p.sendMessage("§c§lERROR §cErro encontrado!");
                 }
 
             } else {
-                p.sendMessage("§3§lGRUPO §fUtilize /resetallaccounts");
+                p.sendMessage("§3§lRESET §fUtilize /resetallaccounts");
                 return false;
             }
         }

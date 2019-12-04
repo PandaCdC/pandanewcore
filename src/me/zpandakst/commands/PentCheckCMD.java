@@ -15,7 +15,7 @@ public class PentCheckCMD implements CommandExecutor {
         Player p = (Player) sender;
         Player player = Bukkit.getPlayer(args[0]);
 
-        if(p.getName().equals("zPandaKST_") || p.getName().equals("LenonAWPPORRA")) {
+        if(!(p.getName().equals("zPandaKST_"))) {
             p.sendMessage(Main.noPerm);
         }
 
