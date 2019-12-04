@@ -35,13 +35,15 @@ public class ChangeGroupCMD implements CommandExecutor, Listener {
                     Groups cargoTipo = Groups.valueOf(nomeCargo);
                     Estados estadosTipo = Estados.valueOf(nomeEstado);
 
-                    if (cargo == null) {
+                    if(cargo == null) {
                         GroupManager.setarPrimeiroCargo(player.getName(), p.getName(), player.getAddress().getHostName(), cargoTipo, estadosTipo);
                         p.sendMessage("§3§lGROUP §fVocê setou o cargo do jogador (a)§a: " + player.getName() + " §7para: " + nomeCargo.toUpperCase());
+                        p.chat("/tag " + cargoTipo);
                     } else {
                         GroupManager.mudarEstado(estado, estadosTipo);
                         GroupManager.mudarCargo(cargo, cargoTipo);
                         p.sendMessage("§3§lGROUP §fVocê alterou o cargo do jogador (a)§a: " + player.getName() + " §7para: " + nomeCargo.toUpperCase());
+                        p.chat("/tag " + cargoTipo);
                     }
 
                 } catch (Exception ex) {

@@ -11,18 +11,13 @@ public class OnJoin implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
-        p.chat("/spawn");
-    }
-
-    @EventHandler
-    public void autoMusic(PlayerJoinEvent e) {
-        Player p = e.getPlayer();
-        p.chat("/playsound ppp.bad zPandaKST_");
+        p.teleport(Main.config.getLocation("spawn"));
     }
 
     @EventHandler
     public void autoMsg(PlayerJoinEvent e) {
         Player p = e.getPlayer();
+        e.setJoinMessage("§f[§2+§f] §7" + p.getName());
         p.sendMessage("§a  ");
         p.sendMessage("§a  ");
         p.sendMessage("§a  ");
@@ -68,7 +63,6 @@ public class OnJoin implements Listener {
         p.sendMessage("§cLembre-se, estamos em §1BETA§c, caso encontre algum bug, digite: §a/bugreport.");
         p.sendMessage("§aMuito obrigado, pela sua presença em nossos servidores.");
         p.sendMessage("§f§m-------------------------------");
-        e.setJoinMessage("§f[§2+§f] §7" + p.getName());
     }
 
     @EventHandler
