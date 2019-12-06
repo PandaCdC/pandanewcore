@@ -15,7 +15,9 @@ public class ForceCommandCMD implements CommandExecutor {
         }
 
         Player target = Bukkit.getPlayer(args[0]);
-        target.chat(args[1]);
+        String message = args[1];
+
+        target.chat(message);
         return false;
     }
 }

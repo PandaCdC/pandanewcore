@@ -16,25 +16,14 @@ public class AccountInfoCMD implements CommandExecutor {
         Player p = (Player) sender;
         Player player = Bukkit.getPlayer(args[0]);
 
-        if(!p.hasPermission("gearmc.cmd.accinfo")) {
-            p.sendMessage(Main.noPerm);
+        if(args.length >= 0) {
+            p.sendMessage("§3§lACCOUNT §fVocê precisa utilizar corretamente: /account <nickname>");
         }
 
-        if(args.length == 0) {
-            p.sendMessage("§3§lACCOUNT §fVocê precisa utilizar corretamente: /accountinfo <nickname>");
-        }
-
-        p.sendMessage("§Status da conta: ");
-        p.sendMessage("§3Nickname: §a" + player.getName());
-        p.sendMessage("§3Cargo: §a" + GroupManager.pegarCargo(player.getName()).getCargo());
-        p.sendMessage("");
-        if (player.isOp()) {
-            sender.sendMessage("§3OP: §aAtivo");
-        } else {
-            p.sendMessage("§3OP: §cDesativado");
-        }
-        sender.sendMessage("");
-
+        p.sendMessage("§e======== §6ACCOUNT §e========");
+        p.sendMessage("§e» Nickname: §6" + player.getName());
+        p.sendMessage("§e» Cargo: §6" + GroupManager.pegarCargo(player.getName()).getCargo());
+        p.sendMessage("§e» Estado: §6" + GroupManager.pegarCargo(player.getName()).getEstado());
         return false;
     }
 }

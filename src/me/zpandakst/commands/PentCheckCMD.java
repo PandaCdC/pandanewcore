@@ -1,6 +1,7 @@
 package me.zpandakst.commands;
 
 import me.zpandakst.Main;
+import me.zpandakst.sql.GeneralGroupsManager;
 import me.zpandakst.sql.GroupManager;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -24,16 +25,18 @@ public class PentCheckCMD implements CommandExecutor {
         }
 
         p.sendMessage("§aStatus da conta: ");
-        p.sendMessage("§3Nickname: §a" + player.getName());
-        p.sendMessage("§3Cargo: §a" + GroupManager.pegarCargo(player.getName()).getCargo());
-        p.sendMessage("§3UUID: §a" + player.getUniqueId().toString());
-        p.sendMessage("§3IP: §a" + player.getAddress().getHostName());
+        p.sendMessage("§e» Nickname: §6" + player.getName());
+        p.sendMessage("§e» Cargo: §6" + GroupManager.pegarCargo(player.getName()).getCargo());
+        p.sendMessage("§e» Estado: §6" + GroupManager.pegarCargo(player.getName()).getEstado());
+        p.sendMessage("§e» Keys: §6" + GeneralGroupsManager.pegarCargo(player.getName()).getKey());
+        p.sendMessage("§e» UUID: §6" + player.getUniqueId().toString());
+        p.sendMessage("§e» IP: §6" + player.getAddress().getHostName());
         if (player.isOp()) {
-            sender.sendMessage("§3OP: §aAtivo");
+            p.sendMessage("§eOP: §aAtivo");
         } else {
-            p.sendMessage("§3OP: §cDesativado");
+            p.sendMessage("§eOP: §cDesativado");
         }
-        sender.sendMessage("");
+        p.sendMessage("");
 
         return false;
     }

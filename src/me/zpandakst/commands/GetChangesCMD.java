@@ -17,17 +17,14 @@ public class GetChangesCMD implements CommandExecutor {
                 return false;
             }
 
-            if (args.length == 0) {
-
-                String key = args[0];
-                if (key == null) {
-                    p.sendMessage("§aAqui está os dados da alteração: §2" + key + "\n §aNickname: §2" + GeneralGroupsManager.pegarCargoKEY(key).getJogador() + "\n §aAutor: §2" + GeneralGroupsManager.pegarCargoKEY(key).getAuthor() + "\n §aCargo: §2" + GeneralGroupsManager.pegarCargoKEY(key).getCargo() + "\n §aEstado: §2" + GeneralGroupsManager.pegarCargoKEY(key).getEstado());
-                } else {
-                    p.sendMessage("§3§lGRUPO §fUtilize /getchanges <key>!");
-                    return false;
-                }
-                return false;
+            if(args.length >= 0) {
+                p.sendMessage("Opa amigo... Falta colocar a KEY!");
             }
+
+            String key = args[0];
+            p.sendMessage("§e======== §6CHANGES §e======== \n §e» Nickname: §6" + GeneralGroupsManager.pegarCargoKEY(key).getJogador() + "\n §e» Autor: §6" + GeneralGroupsManager.pegarCargoKEY(key).getAuthor() + "\n §e» Cargo: §6" + GeneralGroupsManager.pegarCargoKEY(key).getCargo() + "\n §e» Estado: §6" + GeneralGroupsManager.pegarCargoKEY(key).getEstado() + "\n §e» Key: §6" + key + "\n\n §cOBS: §7Isso é uma alteração salva em nosso historico, não é o cargo atual do jogador e não é possível ser alterada ou deletada! Para verificar o cargo atual do jogador digite: /accountinfo <nickname>!");
+
+            return false;
         }
         return false;
     }

@@ -7,8 +7,6 @@ import org.bukkit.entity.Player;
 
 import me.zpandakst.Main;
 
-import java.io.File;
-
 public class GotoSpawnCMD implements CommandExecutor {
 
     @Override

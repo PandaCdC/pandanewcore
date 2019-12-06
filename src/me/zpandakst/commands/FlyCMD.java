@@ -18,7 +18,7 @@ public class FlyCMD implements CommandExecutor {
             sender.sendMessage(("§c§lERRO §fUtilize: /fly ou /fly <nick>"));
             return true;
         } else {
-            if (!p.hasPermission("gearmc.cmd.fly")) {
+            if (!(p.hasPermission("gearmc.cmd.fly"))) {
                 p.sendMessage(Main.noPerm);
                 return true;
             } else {

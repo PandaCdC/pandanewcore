@@ -40,8 +40,8 @@ public class DontSpyEvent implements Listener {
         plugins.add("bukkit:plugins");
         plugins.add("bukkit:plugin");
 
-        // Gear
-        plugins.add("Gear_Lobby" + msg);
+        // Panda
+        plugins.add("pandanewcore" + msg);
 
         // Minecraft
         plugins.add("minecraft:ver");
