@@ -4,9 +4,7 @@ import me.zpandakst.Main;
 import me.zpandakst.accountmanagment.Estados;
 import me.zpandakst.accountmanagment.GeneralGroups;
 import me.zpandakst.accountmanagment.Groups;
-import me.zpandakst.sql.GeneralGroupsManager;
-import me.zpandakst.sql.GroupManager;
-import me.zpandakst.sql.PlayerGroupList;
+import me.zpandakst.sql.*;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -32,6 +30,8 @@ public class ChangeGroupCMD implements CommandExecutor, Listener {
                 Player player = Bukkit.getPlayer(args[0]);
                 PlayerGroupList cargo = GroupManager.pegarCargo(player.getName());
                 PlayerGroupList estado = GroupManager.pegarCargo(player.getName());
+                GeneralGroupList cargo2 = GeneralGroupManager.pegarCargo(player.getName());
+                GeneralGroupList estado2 = GeneralGroupManager.pegarCargo(player.getName());
 
                 try {
                     GeneralGroups cargoSet = GeneralGroups.valueOf(nomeCargo);
@@ -39,14 +39,17 @@ public class ChangeGroupCMD implements CommandExecutor, Listener {
                     Estados estadosTipo = Estados.valueOf(nomeEstado);
 
                     if(cargo == null) {
+                        GeneralGroupManager.primeiroRegistro(player.getName(), p.getName(), p.getAddress().getHostName(), cargoSet, estadosTipo);
                         GroupManager.setarPrimeiroCargo(player.getName(), p.getName(), player.getAddress().getHostName(), cargoTipo, estadosTipo);
-                        GeneralGroupsManager.registerCargo(p.getName(), player.getName(), player.getAddress().getHostName(), cargoSet, estadosTipo);
+                        HistoricGroupsManager.registerCargo(p.getName(), player.getName(), player.getAddress().getHostName(), cargoSet, estadosTipo);
                         p.sendMessage("§3§lGROUP §fVocê setou o cargo do jogador: §a" + player.getName() + " §7para: " + nomeCargo.toUpperCase());
                         p.chat("/tag " + cargoTipo);
                     } else {
-                        GeneralGroupsManager.registerCargo(p.getName(), player.getName(), player.getAddress().getHostName(), cargoSet, estadosTipo);
+                        HistoricGroupsManager.registerCargo(p.getName(), player.getName(), p.getAddress().getHostName(), cargoSet, estadosTipo);
                         GroupManager.mudarEstado(estado, estadosTipo);
                         GroupManager.mudarCargo(cargo, cargoTipo);
+                        GeneralGroupManager.mudarCargo(cargo2, cargoSet);
+                        GeneralGroupManager.mudarEstado(estado2, estadosTipo);
                         p.sendMessage("§3§lGROUP §fVocê alterou o cargo do jogador: §a" + player.getName() + " §7para: " + nomeCargo.toUpperCase());
                         p.chat("/tag " + cargoTipo);
                     }

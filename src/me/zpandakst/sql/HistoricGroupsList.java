@@ -3,7 +3,7 @@ package me.zpandakst.sql;
 import me.zpandakst.accountmanagment.Estados;
 import me.zpandakst.accountmanagment.GeneralGroups;
 
-public class GeneralGroupsList {
+public class HistoricGroupsList {
 
     private String id;
     private String jogador;

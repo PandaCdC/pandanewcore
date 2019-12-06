@@ -11,14 +11,14 @@ import net.eduard.api.lib.Mine;
 import net.eduard.api.lib.manager.DBManager;
 import net.eduard.api.lib.modules.Extra;
 
-public class GeneralGroupsManager {
+public class HistoricGroupsManager {
 
-    private static ArrayList<GeneralGroupsList> cargos = new ArrayList<>();
+    private static ArrayList<HistoricGroupsList> cargos = new ArrayList<>();
 
     private static DBManager database;
 
     public static void registerCargo(String nickname, String author, String ip, GeneralGroups tipo, Estados tipo2) {
-        GeneralGroupsList group = new GeneralGroupsList();
+        HistoricGroupsList group = new HistoricGroupsList();
         group.setJogador(nickname);
         group.setAuthor(author);
         group.setIp(ip);
@@ -27,13 +27,13 @@ public class GeneralGroupsManager {
         group.setDate(System.currentTimeMillis());
         group.setKey(Extra.newKey(Extra.KeyType.ALPHANUMERIC, 8));
         cargos.add(group);
-        int id = database.insert("groupmanager_general", group.getJogador(), group.getAuthor(), group.getIp(), group.getCargo(), group.getEstado(), new Date(group.getDate()), group.getKey());
+        int id = database.insert("groupmanager_historico", group.getJogador(), group.getAuthor(), group.getIp(), group.getCargo(), group.getEstado(), new Date(group.getDate()), group.getKey());
         group.setRegisterId(id);
         cargos.add(group);
     }
 
-    public static GeneralGroupsList pegarCargo(String jogador) {
-        for (GeneralGroupsList cargo : cargos) {
+    public static HistoricGroupsList pegarCargo(String jogador) {
+        for (HistoricGroupsList cargo : cargos) {
             if (cargo.getJogador().equalsIgnoreCase(jogador)) {
                 return cargo;
             }
@@ -42,8 +42,8 @@ public class GeneralGroupsManager {
         return null;
     }
 
-    public static GeneralGroupsList pegarCargoKEY(String id) {
-        for(GeneralGroupsList cargo : cargos) {
+    public static HistoricGroupsList pegarCargoKEY(String id) {
+        for(HistoricGroupsList cargo : cargos) {
             if(cargo.getKey().equalsIgnoreCase(id)) {
             return cargo;
         }
@@ -53,11 +53,11 @@ public class GeneralGroupsManager {
 }
 
     public static void reload() {
-        ResultSet query = database.select("SELECT * FROM `groupmanager_general`");
+        ResultSet query = database.select("SELECT * FROM `groupmanager_historico`");
         try {
             while (query.next()) {
                 try {
-                    GeneralGroupsList group = new GeneralGroupsList();
+                    HistoricGroupsList group = new HistoricGroupsList();
                     group.setRegisterId(query.getInt("id"));
                     group.setJogador(query.getString("jogador"));
                     group.setAuthor(query.getString("author"));
@@ -84,15 +84,15 @@ public class GeneralGroupsManager {
     }
 
     public static void setDatabase(DBManager database) {
-        GeneralGroupsManager.database = database;
+        HistoricGroupsManager.database = database;
     }
 
-    public static ArrayList<GeneralGroupsList> getCargos() {
+    public static ArrayList<HistoricGroupsList> getCargos() {
         return cargos;
     }
 
-    public static void setCargos(ArrayList<GeneralGroupsList> cargos) {
-        GeneralGroupsManager.cargos = cargos;
+    public static void setCargos(ArrayList<HistoricGroupsList> cargos) {
+        HistoricGroupsManager.cargos = cargos;
     }
 
 }

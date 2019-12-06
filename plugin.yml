@@ -19,4 +19,5 @@ commands:
   groupset:
   resetaccount:
   resetallaccounts:
-  getchanges:
+  checkkey:
+  setvip:

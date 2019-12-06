@@ -1,6 +1,5 @@
 package me.zpandakst;
 
-import me.zpandakst.accountmanagment.GeneralGroups;
 import me.zpandakst.commands.*;
 import me.zpandakst.sql.*;
 import me.zpandakst.events.*;
@@ -27,11 +26,13 @@ public class Main extends JavaPlugin {
     }
 
     private static Main instance;
+
     public static Main getInstance() {
         return instance;
     }
 
     public static BukkitConfig config;
+
     public void onEnable() {
         // STRINGS
         prefix = "§6Gear§fMC";
@@ -58,21 +59,26 @@ public class Main extends JavaPlugin {
 
         // MySQL
 
+        GeneralGroupManager.setDatabase(new DBManager("root", "", "localhost", "pandacore"));
         GroupManager.setDatabase(new DBManager("root", "", "localhost", "pandacore"));
-        GeneralGroupsManager.setDatabase(new DBManager("root", "", "localhost", "pandacore"));
+        HistoricGroupsManager.setDatabase(new DBManager("root", "", "localhost", "pandacore"));
         VipManager.setDatabase(new DBManager("root", "", "localhost", "pandacore"));
+        GeneralGroupManager.getDatabase().openConnection();
         GroupManager.getDatabase().openConnection();
-        GeneralGroupsManager.getDatabase().openConnection();
+        HistoricGroupsManager.getDatabase().openConnection();
         VipManager.getDatabase().openConnection();
-        if(GroupManager.getDatabase().hasConnection()) {
-        if(VipManager.getDatabase().hasConnection()) {
-        if(GeneralGroupsManager.getDatabase().hasConnection()) {
-            GeneralGroupsManager.reload();
-            VipManager.reload();
-            GroupManager.reload();
+        if (GeneralGroupManager.getDatabase().hasConnection()) {
+            if (GroupManager.getDatabase().hasConnection()) {
+                if (VipManager.getDatabase().hasConnection()) {
+                    if (HistoricGroupsManager.getDatabase().hasConnection()) {
+                        GeneralGroupManager.reload();
+                        HistoricGroupsManager.reload();
+                        VipManager.reload();
+                        GroupManager.reload();
+                    }
+                }
             }
         }
-    }
         Bukkit.getConsoleSender().sendMessage("§aPLUGIN §fMySQL conectado!");
         Bukkit.getConsoleSender().sendMessage("§aPLUGIN §fPlugin ativado 100%!");
         Bukkit.broadcastMessage("§ePLUGIN §fPlugin das redes GearMC ativado!");
@@ -110,6 +116,7 @@ public class Main extends JavaPlugin {
         getCommand("spawn").setExecutor(new GotoSpawnCMD());
         getCommand("resetaccount").setExecutor(new ResetAccountCMD());
         getCommand("resetallaccounts").setExecutor(new ResetAllAccountsCMD());
-        getCommand("getchanges").setExecutor(new GetChangesCMD());
+        getCommand("checkkey").setExecutor(new GetChangesCMD());
+        getCommand("setvip").setExecutor(new SetVipCMD());
     }
 }

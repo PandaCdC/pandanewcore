@@ -4,9 +4,7 @@ import me.zpandakst.Main;
 import me.zpandakst.accountmanagment.Estados;
 import me.zpandakst.accountmanagment.GeneralGroups;
 import me.zpandakst.accountmanagment.GroupsVips;
-import me.zpandakst.sql.GeneralGroupsManager;
-import me.zpandakst.sql.PlayerVipList;
-import me.zpandakst.sql.VipManager;
+import me.zpandakst.sql.*;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -30,6 +28,7 @@ public class SetVipCMD implements CommandExecutor {
                 String nomeVip = args[1];
                 Player player = Bukkit.getPlayer(args[0]);
                 PlayerVipList vip = VipManager.pegarVip(player.getName());
+                GeneralGroupList vip2 = GeneralGroupManager.pegarCargo(player.getName());
 
                 try {
                     GeneralGroups vipSet = GeneralGroups.valueOf(nomeVip);
@@ -37,11 +36,13 @@ public class SetVipCMD implements CommandExecutor {
                     GroupsVips vipTipo = GroupsVips.valueOf(nomeVip);
 
                     if (vip == null) {
-                        GeneralGroupsManager.registerCargo(p.getName(), player.getName(), player.getAddress().getHostName(), vipSet, estadosTipo);
+                        GeneralGroupManager.primeiroRegistro(player.getName(), p.getName(), p.getAddress().getHostName(), vipSet, estadosTipo);
+                        HistoricGroupsManager.registerCargo(p.getName(), player.getName(), player.getAddress().getHostName(), vipSet, estadosTipo);
                         VipManager.setarPrimeiroVip(player.getName(), p.getName(), player.getAddress().getHostName(), vipTipo);
                         p.sendMessage("§3§lGROUP §fVocê alterou o cargo do jogador (a)§a: " + player.getName() + " §7para: " + nomeVip.toUpperCase());
                     } else {
-                        GeneralGroupsManager.registerCargo(p.getName(), player.getName(), player.getAddress().getHostName(), vipSet, estadosTipo);
+                        GeneralGroupManager.mudarCargo(vip2, vipSet);
+                        HistoricGroupsManager.registerCargo(player.getName(), p.getName(), p.getAddress().getHostName(), vipSet, estadosTipo);
                         VipManager.mudarVip(vip, vipTipo);
                         p.sendMessage("§3§lGROUP §fVocê alterou o cargo do jogador (a)§a: " + player.getName() + " §7para: " + nomeVip.toUpperCase());
                     }

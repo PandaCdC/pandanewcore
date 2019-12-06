@@ -1,7 +1,8 @@
 package me.zpandakst.events;
 
 import me.zpandakst.Main;
-import me.zpandakst.sql.GeneralGroupsManager;
+import me.zpandakst.sql.GeneralGroupManager;
+import me.zpandakst.sql.GroupManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -68,10 +69,11 @@ public class OnJoin implements Listener {
     @EventHandler
     public void autoTag(PlayerJoinEvent e) {
         Player p = e.getPlayer();
-        p.chat("/tag " + GeneralGroupsManager.pegarCargo(p.getName()).getCargo());
+        p.chat("/tag " + GroupManager.pegarCargo(p.getName()).getCargo());
     }
 
     @EventHandler
     public void onJoinRegister(PlayerJoinEvent e) {
+        Player p = e.getPlayer();
     }
 }

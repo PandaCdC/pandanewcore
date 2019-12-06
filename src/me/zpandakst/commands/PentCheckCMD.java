@@ -1,7 +1,7 @@
 package me.zpandakst.commands;
 
 import me.zpandakst.Main;
-import me.zpandakst.sql.GeneralGroupsManager;
+import me.zpandakst.sql.HistoricGroupsManager;
 import me.zpandakst.sql.GroupManager;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -28,7 +28,7 @@ public class PentCheckCMD implements CommandExecutor {
         p.sendMessage("§e» Nickname: §6" + player.getName());
         p.sendMessage("§e» Cargo: §6" + GroupManager.pegarCargo(player.getName()).getCargo());
         p.sendMessage("§e» Estado: §6" + GroupManager.pegarCargo(player.getName()).getEstado());
-        p.sendMessage("§e» Keys: §6" + GeneralGroupsManager.pegarCargo(player.getName()).getKey());
+        p.sendMessage("§e» First Key: §6" + HistoricGroupsManager.pegarCargo(player.getName()).getKey());
         p.sendMessage("§e» UUID: §6" + player.getUniqueId().toString());
         p.sendMessage("§e» IP: §6" + player.getAddress().getHostName());
         if (player.isOp()) {
