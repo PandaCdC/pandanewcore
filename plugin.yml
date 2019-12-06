@@ -1,7 +1,7 @@
-name: PandaOldCore
+name: PandaNewCore
 main: me.zpandakst.Main
-version: 2.1.7
-description: Plugin CORE antigo das redes Panda
+version: 2.5.8
+description: Plugin CORE novo das redes de teste Panda
 author: zPandaKST_
 commands:
   cc:
@@ -19,3 +19,4 @@ commands:
   groupset:
   resetaccount:
   resetallaccounts:
+  getchanges:

@@ -2,7 +2,9 @@ package me.zpandakst.commands;
 
 import me.zpandakst.Main;
 import me.zpandakst.accountmanagment.Estados;
+import me.zpandakst.accountmanagment.GeneralGroups;
 import me.zpandakst.accountmanagment.Groups;
+import me.zpandakst.sql.GeneralGroupsManager;
 import me.zpandakst.sql.GroupManager;
 import me.zpandakst.sql.PlayerGroupList;
 import org.bukkit.Bukkit;
@@ -32,17 +34,20 @@ public class ChangeGroupCMD implements CommandExecutor, Listener {
                 PlayerGroupList estado = GroupManager.pegarCargo(player.getName());
 
                 try {
+                    GeneralGroups cargoSet = GeneralGroups.valueOf(nomeCargo);
                     Groups cargoTipo = Groups.valueOf(nomeCargo);
                     Estados estadosTipo = Estados.valueOf(nomeEstado);
 
                     if(cargo == null) {
                         GroupManager.setarPrimeiroCargo(player.getName(), p.getName(), player.getAddress().getHostName(), cargoTipo, estadosTipo);
-                        p.sendMessage("§3§lGROUP §fVocê setou o cargo do jogador (a)§a: " + player.getName() + " §7para: " + nomeCargo.toUpperCase());
+                        GeneralGroupsManager.registerCargo(p.getName(), player.getName(), player.getAddress().getHostName(), cargoSet, estadosTipo);
+                        p.sendMessage("§3§lGROUP §fVocê setou o cargo do jogador: §a" + player.getName() + " §7para: " + nomeCargo.toUpperCase());
                         p.chat("/tag " + cargoTipo);
                     } else {
+                        GeneralGroupsManager.registerCargo(p.getName(), player.getName(), player.getAddress().getHostName(), cargoSet, estadosTipo);
                         GroupManager.mudarEstado(estado, estadosTipo);
                         GroupManager.mudarCargo(cargo, cargoTipo);
-                        p.sendMessage("§3§lGROUP §fVocê alterou o cargo do jogador (a)§a: " + player.getName() + " §7para: " + nomeCargo.toUpperCase());
+                        p.sendMessage("§3§lGROUP §fVocê alterou o cargo do jogador: §a" + player.getName() + " §7para: " + nomeCargo.toUpperCase());
                         p.chat("/tag " + cargoTipo);
                     }
 

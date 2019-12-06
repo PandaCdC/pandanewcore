@@ -1,7 +1,10 @@
 package me.zpandakst.commands;
 
 import me.zpandakst.Main;
+import me.zpandakst.accountmanagment.Estados;
+import me.zpandakst.accountmanagment.GeneralGroups;
 import me.zpandakst.accountmanagment.GroupsVips;
+import me.zpandakst.sql.GeneralGroupsManager;
 import me.zpandakst.sql.PlayerVipList;
 import me.zpandakst.sql.VipManager;
 import org.bukkit.Bukkit;
@@ -21,19 +24,24 @@ public class SetVipCMD implements CommandExecutor {
                 return false;
             }
 
-            if (args.length == 2) {
+            if (args.length == 3) {
 
+                String nomeEstado = args[2];
                 String nomeVip = args[1];
                 Player player = Bukkit.getPlayer(args[0]);
                 PlayerVipList vip = VipManager.pegarVip(player.getName());
 
                 try {
+                    GeneralGroups vipSet = GeneralGroups.valueOf(nomeVip);
+                    Estados estadosTipo = Estados.valueOf(nomeEstado);
                     GroupsVips vipTipo = GroupsVips.valueOf(nomeVip);
 
                     if (vip == null) {
+                        GeneralGroupsManager.registerCargo(p.getName(), player.getName(), player.getAddress().getHostName(), vipSet, estadosTipo);
                         VipManager.setarPrimeiroVip(player.getName(), p.getName(), player.getAddress().getHostName(), vipTipo);
                         p.sendMessage("§3§lGROUP §fVocê alterou o cargo do jogador (a)§a: " + player.getName() + " §7para: " + nomeVip.toUpperCase());
                     } else {
+                        GeneralGroupsManager.registerCargo(p.getName(), player.getName(), player.getAddress().getHostName(), vipSet, estadosTipo);
                         VipManager.mudarVip(vip, vipTipo);
                         p.sendMessage("§3§lGROUP §fVocê alterou o cargo do jogador (a)§a: " + player.getName() + " §7para: " + nomeVip.toUpperCase());
                     }
