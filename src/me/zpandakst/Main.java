@@ -104,7 +104,7 @@ public class Main extends JavaPlugin {
     public void commands() {
         getCommand("cc").setExecutor(new ChatClearCMD());
         getCommand("chatclear").setExecutor(new ChatClearCMD());
-        getCommand("tag").setExecutor(new TagCMD());
+        // TAG
         getCommand("changegroup").setExecutor(new ChangeGroupCMD());
         getCommand("setcargo").setExecutor(new ChangeGroupCMD());
         getCommand("pentcheck").setExecutor(new PentCheckCMD());
@@ -118,5 +118,6 @@ public class Main extends JavaPlugin {
         getCommand("resetallaccounts").setExecutor(new ResetAllAccountsCMD());
         getCommand("checkkey").setExecutor(new GetChangesCMD());
         getCommand("setvip").setExecutor(new SetVipCMD());
+        getCommand("getconfig").setExecutor(new GetConfigCMD());
     }
 }

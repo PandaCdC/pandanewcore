@@ -1,7 +1,6 @@
 package me.zpandakst.events;
 
 import me.zpandakst.Main;
-import me.zpandakst.sql.GeneralGroupManager;
 import me.zpandakst.sql.GroupManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

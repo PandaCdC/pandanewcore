@@ -8,7 +8,6 @@ import org.bukkit.entity.Player;
 import me.zpandakst.Main;
 
 public class GotoSpawnCMD implements CommandExecutor {
-
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if(sender instanceof Player) {

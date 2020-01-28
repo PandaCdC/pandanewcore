@@ -11,7 +11,7 @@ import org.bukkit.event.Listener;
 public class ChatClearCMD implements CommandExecutor, Listener {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Player p = (Player) sender;
-        if (!(p.hasPermission("gearmc.cmd.cc"))) {
+        if (!p.hasPermission("gearmc.cmd.cc")) {
         p.sendMessage(Main.noPerm);
         }
 

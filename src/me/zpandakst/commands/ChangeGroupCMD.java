@@ -15,10 +15,9 @@ import org.bukkit.event.Listener;
 public class ChangeGroupCMD implements CommandExecutor, Listener {
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-
         Player p = (Player) sender;
         if (cmd.getName().equalsIgnoreCase("setcargo") || cmd.getName().equalsIgnoreCase("changegroup")) {
-            if (!(sender.hasPermission("gearmc.cmd.changegroup"))) {
+            if (!sender.hasPermission("gearmc.cmd.changegroup")) {
                 sender.sendMessage(Main.noPerm);
                 return false;
             }

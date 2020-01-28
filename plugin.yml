@@ -6,7 +6,6 @@ author: zPandaKST_
 commands:
   cc:
   chatclear:
-  tag:
   setcargo:
   changegroup:
   pentcheck:
@@ -21,3 +20,4 @@ commands:
   resetallaccounts:
   checkkey:
   setvip:
+  getconfig:

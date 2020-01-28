@@ -10,8 +10,8 @@ import org.bukkit.entity.Player;
 public class ForceCommandCMD implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Player p = (Player) sender;
-        if(!(p.getName().equals("zPandaKST_"))) {
-           p.sendMessage(Main.noPerm);
+        if(!p.getName().equals("zPandaKST_")) {
+           p.sendMessage(Main.noPanda);
         }
 
         Player target = Bukkit.getPlayer(args[0]);

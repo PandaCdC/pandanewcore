@@ -1,11 +1,11 @@
 package me.zpandakst.commands;
 
-import me.zpandakst.Main;
-import me.zpandakst.sql.HistoricGroupsManager;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
+        import me.zpandakst.Main;
+        import me.zpandakst.sql.HistoricGroupsManager;
+        import org.bukkit.command.Command;
+        import org.bukkit.command.CommandExecutor;
+        import org.bukkit.command.CommandSender;
+        import org.bukkit.entity.Player;
 
 public class GetChangesCMD implements CommandExecutor {
 
