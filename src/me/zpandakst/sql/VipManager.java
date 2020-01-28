@@ -42,6 +42,10 @@ public class VipManager {
 
     }
 
+    public static void resetAccount(String nickname) {
+        database.delete("groupmanager_vip", "nickname =?", "nickname");
+    }
+
     public static void resetAllAccounts() {
     database.clearTable("groupmanager_vip");
     }

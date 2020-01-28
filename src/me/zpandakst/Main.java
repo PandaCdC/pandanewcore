@@ -112,9 +112,8 @@ public class Main extends JavaPlugin {
         getCommand("forcechat").setExecutor(new ForceCommandCMD());
         getCommand("setspawn").setExecutor(new SetSpawnCMD());
         getCommand("spawn").setExecutor(new GotoSpawnCMD());
-        getCommand("resetaccount").setExecutor(new ResetAccountCMD());
         getCommand("checkkey").setExecutor(new GetChangesCMD());
         getCommand("getconfig").setExecutor(new GetConfigCMD());
-        getCommand("pmanager").setExecutor(new PlayerManageCMD());
+        getCommand("pmanager").setExecutor(new PManagerCMD());
     }
 }
