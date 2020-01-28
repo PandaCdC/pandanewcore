@@ -4,7 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import me.zpandakst.accountmanagment.Estados;
 import me.zpandakst.accountmanagment.Groups;
 import net.eduard.api.lib.Mine;
 import net.eduard.api.lib.manager.DBManager;
@@ -15,15 +14,14 @@ public class GroupManager {
 
     private static DBManager database;
 
-    public static void setarPrimeiroCargo(String nickname, String author, String ip, Groups tipo, Estados tipo2) {
+    public static void setarPrimeiroCargo(String nickname, String author, String ip, Groups tipo) {
         PlayerGroupList group = new PlayerGroupList();
         group.setJogador(nickname);
         group.setAuthor(author);
         group.setIp(ip);
         group.setCargo(tipo);
-        group.setEstado(tipo2);
         cargos.add(group);
-        int id = database.insert("groupmanager_staff", group.getJogador(), group.getAuthor(), group.getIp(), group.getCargo(), group.getEstado());
+        int id = database.insert("groupmanager_staff", group.getJogador(), group.getAuthor(), group.getIp(), group.getCargo());
         group.setRegisterId(id);
         cargos.add(group);
     }
@@ -31,11 +29,6 @@ public class GroupManager {
     public static void mudarCargo(PlayerGroupList group, Groups tipo) {
         group.setCargo(tipo);
         database.change("groupmanager_staff", "cargo =?", "nickname = ?", tipo, group.getJogador());
-    }
-
-    public static void mudarEstado(PlayerGroupList group, Estados estado) {
-        group.setEstado(estado);
-        database.change("groupmanager_staff", "estado =?", "nickname =?", estado, group.getJogador());
     }
 
     public static PlayerGroupList pegarCargo(String jogador) {
@@ -68,7 +61,6 @@ public class GroupManager {
                     group.setAuthor(query.getString("author"));
                     group.setIp(query.getString("ip"));
                     group.setCargo(Groups.valueOf(query.getString("cargo").toUpperCase()));
-                    group.setEstado(Estados.valueOf(query.getString("estado").toUpperCase()));
                     getCargos().add(group);
 
                 } catch (Exception e) {

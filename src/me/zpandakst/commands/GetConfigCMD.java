@@ -19,7 +19,7 @@ public class GetConfigCMD implements CommandExecutor {
             p.sendMessage(Main.noPanda);
         }
 
-        p.sendMessage("§aAs atuais configurações da máquina são: \n\n §aProvedorH: §2OVH \n §aProvedorD: §2GoDaddy \n §aDominio: §2magicmc.xyz \n §aHorario na máquina: §2" + System.currentTimeMillis() + " \n §aHorario de São Paulo: §2" + TimeZone.getTimeZone("America/Sao_Paulo" + " \n §aOS: §2" + System.getProperty("os.name") + " \n §aVersão do OS: §2" + System.getProperty("os.version") + " \n §aOS Teste: §2" + System.getProperty("os.arch")));
+        p.sendMessage("§aAs atuais configurações da máquina são: \n\n §aProvedorH: §2OVH \n §aProvedorD: §2GoDaddy \n §aDominio: §2magicmc.xyz \n §aHorario na máquina: §2" + System.nanoTime() + " \n §aHorario de São Paulo: §2" + TimeZone.getTimeZone("America/Sao_Paulo") + " \n §aOS: §2" + System.getProperty("os.name") + " \n §aVersão do OS: §2" + System.getProperty("os.version"));
         return false;
     }
 }

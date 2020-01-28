@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import me.zpandakst.accountmanagment.Estados;
 import me.zpandakst.accountmanagment.GeneralGroups;
 import net.eduard.api.lib.Mine;
 import net.eduard.api.lib.manager.DBManager;
@@ -17,17 +16,16 @@ public class HistoricGroupsManager {
 
     private static DBManager database;
 
-    public static void registerCargo(String nickname, String author, String ip, GeneralGroups tipo, Estados tipo2) {
+    public static void registerCargo(String nickname, String author, String ip, GeneralGroups tipo) {
         HistoricGroupsList group = new HistoricGroupsList();
         group.setJogador(nickname);
         group.setAuthor(author);
         group.setIp(ip);
         group.setCargo(tipo);
-        group.setEstado(tipo2);
         group.setDate(System.currentTimeMillis());
         group.setKey(Extra.newKey(Extra.KeyType.ALPHANUMERIC, 8));
         cargos.add(group);
-        int id = database.insert("groupmanager_historico", group.getJogador(), group.getAuthor(), group.getIp(), group.getCargo(), group.getEstado(), new Date(group.getDate()), group.getKey());
+        int id = database.insert("groupmanager_historico", group.getJogador(), group.getAuthor(), group.getIp(), group.getCargo(), new Date(group.getDate()), group.getKey());
         group.setRegisterId(id);
         cargos.add(group);
     }
@@ -63,7 +61,6 @@ public class HistoricGroupsManager {
                     group.setAuthor(query.getString("author"));
                     group.setIp(query.getString("ip"));
                     group.setCargo(GeneralGroups.valueOf(query.getString("group").toUpperCase()));
-                    group.setEstado(Estados.valueOf(query.getString("estado").toUpperCase()));
                     group.setDate(query.getTimestamp("data").getTime());
                     group.setKey(query.getString("group_key"));
                     getCargos().add(group);
