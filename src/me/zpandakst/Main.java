@@ -105,8 +105,6 @@ public class Main extends JavaPlugin {
         getCommand("cc").setExecutor(new ChatClearCMD());
         getCommand("chatclear").setExecutor(new ChatClearCMD());
         // TAG
-        getCommand("changegroup").setExecutor(new ChangeGroupCMD());
-        getCommand("setcargo").setExecutor(new ChangeGroupCMD());
         getCommand("pentcheck").setExecutor(new PentCheckCMD());
         getCommand("account").setExecutor(new AccountInfoCMD());
         getCommand("fly").setExecutor(new FlyCMD());
@@ -115,9 +113,8 @@ public class Main extends JavaPlugin {
         getCommand("setspawn").setExecutor(new SetSpawnCMD());
         getCommand("spawn").setExecutor(new GotoSpawnCMD());
         getCommand("resetaccount").setExecutor(new ResetAccountCMD());
-        getCommand("resetallaccounts").setExecutor(new ResetAllAccountsCMD());
         getCommand("checkkey").setExecutor(new GetChangesCMD());
-        getCommand("setvip").setExecutor(new SetVipCMD());
         getCommand("getconfig").setExecutor(new GetConfigCMD());
+        getCommand("pmanager").setExecutor(new PlayerManageCMD());
     }
 }

@@ -1,6 +1,5 @@
 package me.zpandakst.sql;
 
-import me.zpandakst.accountmanagment.Estados;
 import me.zpandakst.accountmanagment.GeneralGroups;
 
 public class GeneralGroupList {
@@ -10,7 +9,6 @@ public class GeneralGroupList {
     private String autor;
     private String ip;
     private GeneralGroups group;
-    private Estados estado;
 
     public String getIp() {
         return ip;
@@ -48,16 +46,8 @@ public class GeneralGroupList {
         return group;
     }
 
-    public Estados getEstado() {
-        return estado;
-    }
-
     public void setCargo(GeneralGroups groups) {
         this.group = groups;
-    }
-
-    public void setEstado(Estados estados) {
-        this.estado = estados;
     }
 
     private int registerId;

@@ -6,8 +6,6 @@ author: zPandaKST_
 commands:
   cc:
   chatclear:
-  setcargo:
-  changegroup:
   pentcheck:
   account:
   fly:
@@ -15,9 +13,7 @@ commands:
   forcechat:
   setspawn:
   spawn:
-  groupset:
-  resetaccount:
-  resetallaccounts:
   checkkey:
   setvip:
   getconfig:
+  pmanager:

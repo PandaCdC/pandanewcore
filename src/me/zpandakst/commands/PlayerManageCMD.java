@@ -3,6 +3,7 @@ package me.zpandakst.commands;
 import me.zpandakst.Main;
 import me.zpandakst.accountmanagment.GeneralGroups;
 import me.zpandakst.accountmanagment.Groups;
+import me.zpandakst.accountmanagment.GroupsVips;
 import me.zpandakst.sql.*;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -52,6 +53,30 @@ public class PlayerManageCMD implements CommandExecutor {
             p.sendMessage("§4§lACCOUNT §fTodas as contas do banco de dados acabaram de ser apagadas!");
         } else if(args[0].equalsIgnoreCase("resetaccount")) {
             GroupManager.resetAccount(target.getName());
+        } else if (args[0].equalsIgnoreCase("setvip")) {
+            String nomeVip = args[2];
+            PlayerVipList vip = VipManager.pegarVip(target.getName());
+            GeneralGroupList vip2 = GeneralGroupManager.pegarCargo(target.getName());
+
+            try {
+                GeneralGroups vipSet = GeneralGroups.valueOf(nomeVip);
+                GroupsVips vipTipo = GroupsVips.valueOf(nomeVip);
+
+                if (vip == null) {
+                    GeneralGroupManager.primeiroRegistro(target.getName(), p.getName(), p.getAddress().getHostName(), vipSet);
+                    HistoricGroupsManager.registerCargo(p.getName(), target.getName(), target.getAddress().getHostName(), vipSet);
+                    VipManager.setarPrimeiroVip(target.getName(), p.getName(), target.getAddress().getHostName(), vipTipo);
+                    p.sendMessage("§3§lGROUP §fVocê alterou o cargo do jogador (a)§a: " + target.getName() + " §7para: " + nomeVip.toUpperCase());
+                } else {
+                    GeneralGroupManager.mudarCargo(vip2, vipSet);
+                    HistoricGroupsManager.registerCargo(target.getName(), p.getName(), p.getAddress().getHostName(), vipSet);
+                    VipManager.mudarVip(vip, vipTipo);
+                    p.sendMessage("§3§lGROUP §fVocê alterou o cargo do jogador (a)§a: " + target.getName() + " §7para: " + nomeVip.toUpperCase());
+                }
+
+            } catch (Exception ex) {
+                p.sendMessage("§c§lERROR §cVIP invalido!");
+            }
         }
         return false;
     }

@@ -1,6 +1,5 @@
 package me.zpandakst.sql;
 
-import me.zpandakst.accountmanagment.Estados;
 import me.zpandakst.accountmanagment.GeneralGroups;
 
 public class HistoricGroupsList {
@@ -10,7 +9,6 @@ public class HistoricGroupsList {
     private String author;
     private String ip;
     private GeneralGroups group;
-    private Estados estado;
     private long date;
     private String key;
 
@@ -50,16 +48,8 @@ public class HistoricGroupsList {
         return group;
     }
 
-    public Estados getEstado() {
-        return estado;
-    }
-
     public void setCargo(GeneralGroups groups) {
         this.group = groups;
-    }
-
-    public void setEstado(Estados estados) {
-        this.estado = estados;
     }
 
     public long getDate() {
