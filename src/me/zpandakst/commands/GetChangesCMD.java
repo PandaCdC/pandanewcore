@@ -22,7 +22,7 @@ public class GetChangesCMD implements CommandExecutor {
             }
 
             String key = args[0];
-            p.sendMessage("§e======== §6CHANGES §e======== \n §e» Nickname: §6" + HistoricGroupsManager.pegarCargoKEY(key).getJogador() + "\n §e» Autor: §6" + HistoricGroupsManager.pegarCargoKEY(key).getAuthor() + "\n §e» Cargo: §6" + HistoricGroupsManager.pegarCargoKEY(key).getCargo() + "\n §e» Estado: §6" + HistoricGroupsManager.pegarCargoKEY(key).getEstado() + "\n §e» Key: §6" + key + "\n\n §cOBS: §7Isso é uma alteração salva em nosso historico, não é o cargo atual do jogador e não é possível ser alterada ou deletada! Para verificar o cargo atual do jogador digite: /accountinfo <nickname>!");
+            p.sendMessage("§e======== §6CHANGES §e======== \n §e» Nickname: §6" + HistoricGroupsManager.pegarCargoKEY(key).getJogador() + "\n §e» Autor: §6" + HistoricGroupsManager.pegarCargoKEY(key).getAuthor() + "\n §e» Cargo: §6" + HistoricGroupsManager.pegarCargoKEY(key).getCargo() + "\n §e» Key: §6" + key + "\n\n §cOBS: §7Isso é uma alteração salva em nosso historico, não é o cargo atual do jogador e não é possível ser alterada ou deletada! Para verificar o cargo atual do jogador digite: /accountinfo <nickname>!");
 
             return false;
         }

@@ -23,7 +23,7 @@ public class AccountInfoCMD implements CommandExecutor {
         p.sendMessage("§e======== §6ACCOUNT §e========");
         p.sendMessage("§e» Nickname: §6" + player.getName());
         p.sendMessage("§e» Cargo: §6" + GroupManager.pegarCargo(player.getName()).getCargo());
-        p.sendMessage("§e» Estado: §6" + GroupManager.pegarCargo(player.getName()).getEstado());
+        p.sendMessage("§e» Estado: §6" + GroupManager.pegarCargo(player.getName()));
         return false;
     }
 }
