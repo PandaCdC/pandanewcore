@@ -35,7 +35,7 @@ public class Main extends JavaPlugin {
 
     public void onEnable() {
         // STRINGS
-        prefix = "§6Gear§fMC";
+        prefix = "§5§lMagic§f§lMC";
         noPanda = "§c§lERRO §7Você precisa ser o Panda para executar esse comando!";
         noPerm = "§c§lERRO §7Você não tem permissão para isso!";
         consoleBlock = "Você não pode fazer isso no CLIENT!";
@@ -59,24 +59,14 @@ public class Main extends JavaPlugin {
 
         // MySQL
 
-        GeneralGroupManager.setDatabase(new DBManager("root", "", "localhost", "pandacore"));
-        GroupManager.setDatabase(new DBManager("root", "", "localhost", "pandacore"));
-        HistoricGroupsManager.setDatabase(new DBManager("root", "", "localhost", "pandacore"));
-        VipManager.setDatabase(new DBManager("root", "", "localhost", "pandacore"));
-        GeneralGroupManager.getDatabase().openConnection();
+        GroupManager.setDatabase(new DBManager("root", "Tornado135@", "localhost", "pandacore"));
+        HistoricGroupsManager.setDatabase(new DBManager("root", "Tornado135@", "localhost", "pandacore"));
         GroupManager.getDatabase().openConnection();
         HistoricGroupsManager.getDatabase().openConnection();
-        VipManager.getDatabase().openConnection();
-        if (GeneralGroupManager.getDatabase().hasConnection()) {
-            if (GroupManager.getDatabase().hasConnection()) {
-                if (VipManager.getDatabase().hasConnection()) {
-                    if (HistoricGroupsManager.getDatabase().hasConnection()) {
-                        GeneralGroupManager.reload();
-                        HistoricGroupsManager.reload();
-                        VipManager.reload();
-                        GroupManager.reload();
-                    }
-                }
+        if (GroupManager.getDatabase().hasConnection()) {
+            if (HistoricGroupsManager.getDatabase().hasConnection()) {
+                HistoricGroupsManager.reload();
+                GroupManager.reload();
             }
         }
         Bukkit.getConsoleSender().sendMessage("§aPLUGIN §fMySQL conectado!");
@@ -113,7 +103,7 @@ public class Main extends JavaPlugin {
         getCommand("setspawn").setExecutor(new SetSpawnCMD());
         getCommand("spawn").setExecutor(new GotoSpawnCMD());
         getCommand("checkkey").setExecutor(new GetChangesCMD());
-        getCommand("getconfig").setExecutor(new GetConfigCMD());
-        getCommand("pmanager").setExecutor(new PManagerCMD());
+        getCommand("getconfig").setExecutor(new GetConfigOptionCMD());
+        getCommand("setrank").setExecutor(new SetRankCMD());
     }
 }

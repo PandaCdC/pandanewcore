@@ -1,6 +1,6 @@
 package me.zpandakst.sql;
 
-import me.zpandakst.accountmanagment.Groups;
+import me.zpandakst.accountmanagment.GeneralGroups;
 
 public class PlayerGroupList {
 
@@ -8,7 +8,7 @@ public class PlayerGroupList {
     private String jogador;
     private String author;
     private String id;
-    private Groups group;
+    private GeneralGroups group;
 
     public String getIp() {
         return ip;
@@ -42,11 +42,11 @@ public class PlayerGroupList {
         this.id = id;
     }
 
-    public Groups getCargo() {
+    public GeneralGroups getCargo() {
         return group;
     }
 
-    public void setCargo(Groups groups) {
+    public void setCargo(GeneralGroups groups) {
         this.group = groups;
     }
 

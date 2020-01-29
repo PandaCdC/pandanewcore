@@ -16,4 +16,6 @@ commands:
   checkkey:
   setvip:
   getconfig:
-  pmanager:
+  setrank:
+  resetallaccounts:
+  resetaccount:

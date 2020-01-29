@@ -52,6 +52,9 @@ public class DontSpyEvent implements Listener {
         plugins.add("minecraft:about");
         plugins.add("minecraft:op");
 
+        // API
+        plugins.add("api");
+
 
         for (String Loop : plugins) {
             if (msg[0].equalsIgnoreCase("/" + Loop))

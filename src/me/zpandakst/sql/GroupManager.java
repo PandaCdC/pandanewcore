@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import me.zpandakst.accountmanagment.Groups;
+import me.zpandakst.accountmanagment.GeneralGroups;
 import net.eduard.api.lib.Mine;
 import net.eduard.api.lib.manager.DBManager;
 
@@ -14,21 +14,21 @@ public class GroupManager {
 
     private static DBManager database;
 
-    public static void setarPrimeiroCargo(String nickname, String author, String ip, Groups tipo) {
+    public static void setarPrimeiroCargo(String nickname, String author, String ip, GeneralGroups tipo) {
         PlayerGroupList group = new PlayerGroupList();
         group.setJogador(nickname);
         group.setAuthor(author);
         group.setIp(ip);
         group.setCargo(tipo);
         cargos.add(group);
-        int id = database.insert("groupmanager_staff", group.getJogador(), group.getAuthor(), group.getIp(), group.getCargo());
+        int id = database.insert("groupmanager_geral", group.getJogador(), group.getAuthor(), group.getIp(), group.getCargo());
         group.setRegisterId(id);
         cargos.add(group);
     }
 
-    public static void mudarCargo(PlayerGroupList group, Groups tipo) {
+    public static void mudarCargo(PlayerGroupList group, GeneralGroups tipo) {
         group.setCargo(tipo);
-        database.change("groupmanager_staff", "cargo =?", "nickname = ?", tipo, group.getJogador());
+        database.change("groupmanager_geral", "cargo =?", "nickname = ?", tipo, group.getJogador());
     }
 
     public static PlayerGroupList pegarCargo(String jogador) {
@@ -47,20 +47,20 @@ public class GroupManager {
     }
 
     public static void resetAllAccounts() {
-        database.clearTable("groupmanager_staff");
+        database.clearTable("groupmanager_geral");
     }
 
     public static void reload() {
-        ResultSet query = database.select("SELECT * FROM `groupmanager_staff`");
+        ResultSet query = database.select("SELECT * FROM `groupmanager_geral`");
         try {
             while (query.next()) {
                 try {
                     PlayerGroupList group = new PlayerGroupList();
                     group.setRegisterId(query.getInt("id"));
                     group.setJogador(query.getString("nickname"));
-                    group.setAuthor(query.getString("author"));
-                    group.setIp(query.getString("ip"));
-                    group.setCargo(Groups.valueOf(query.getString("cargo").toUpperCase()));
+                    group.setAuthor(query.getString("autor"));
+                    group.setIp(query.getString("autor_ip"));
+                    group.setCargo(GeneralGroups.valueOf(query.getString("group").toUpperCase()));
                     getCargos().add(group);
 
                 } catch (Exception e) {

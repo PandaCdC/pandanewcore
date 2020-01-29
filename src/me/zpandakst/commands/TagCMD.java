@@ -1,4 +1,4 @@
-package Tags;
+package me.zpandakst.commands;
 
 import org.bukkit.event.*;
 import org.bukkit.command.*;

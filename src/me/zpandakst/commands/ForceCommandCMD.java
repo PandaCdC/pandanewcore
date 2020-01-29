@@ -17,6 +17,11 @@ public class ForceCommandCMD implements CommandExecutor {
         Player target = Bukkit.getPlayer(args[0]);
         String message = args[1];
 
+        if(target == null) {
+            p.sendMessage("§c§lPLAYER §fJogador offline ou inexistente!");
+            return true;
+        }
+
         target.chat(message);
         return false;
     }

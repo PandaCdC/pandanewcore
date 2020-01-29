@@ -64,15 +64,4 @@ public class OnJoin implements Listener {
         p.sendMessage("§aMuito obrigado, pela sua presença em nossos servidores.");
         p.sendMessage("§f§m-------------------------------");
     }
-
-    @EventHandler
-    public void autoTag(PlayerJoinEvent e) {
-        Player p = e.getPlayer();
-        p.chat("/tag " + GroupManager.pegarCargo(p.getName()).getCargo());
-    }
-
-    @EventHandler
-    public void onJoinRegister(PlayerJoinEvent e) {
-        Player p = e.getPlayer();
-    }
 }

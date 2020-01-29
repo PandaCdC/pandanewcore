@@ -12,7 +12,7 @@ public class SetSpawnCMD implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (sender instanceof Player) {
             Player p = (Player) sender;
-            if(p.hasPermission("gearmc.buildmanager.setspawn")) {
+            if(!p.hasPermission("gearmc.buildmanager.setspawn")) {
                 Main.config.set("spawn", p.getLocation());
                 Main.config.saveConfig();
                 p.sendMessage("§a§lSPAWN §aVocê setou o Spawn!");

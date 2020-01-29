@@ -1,8 +1,6 @@
 package me.zpandakst.commands;
 
-import me.zpandakst.Main;
 import me.zpandakst.sql.GroupManager;
-import me.zpandakst.sql.VipManager;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -20,10 +18,14 @@ public class AccountInfoCMD implements CommandExecutor {
             p.sendMessage("§3§lACCOUNT §fVocê precisa utilizar corretamente: /account <nickname>");
         }
 
+        if(player == null) {
+            p.sendMessage("§c§lPLAYER §fJogador offline ou inexistente!");
+            return true;
+        }
+
         p.sendMessage("§e======== §6ACCOUNT §e========");
         p.sendMessage("§e» Nickname: §6" + player.getName());
         p.sendMessage("§e» Cargo: §6" + GroupManager.pegarCargo(player.getName()).getCargo());
-        p.sendMessage("§e» Estado: §6" + GroupManager.pegarCargo(player.getName()));
         return false;
     }
 }
